@@ -1,0 +1,19 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "img/icon.png",
+      "popup": "popup.html"
+   },
+   "description": "Verifica o saldo do seu Vale Refei\u00E7\u00E3o.",
+   "icons": {
+      "128": "img/logo128.png",
+      "16": "img/logo16.png",
+      "19": "img/logo19.png",
+      "32": "img/logo32.png",
+      "48": "img/logo48.png"
+   },
+   "name": "Visa Vale",
+   "options_page": "options.html",
+   "permissions": ["notifications", "tabs", "http://*/*", "https://*/*" ],
+   "version": "1.0.2"
+}
