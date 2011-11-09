@@ -21,6 +21,7 @@ function preencherSaldo(saldo){
 	 	$("#valor").html(localStorage['saldo'])
 	}
 }
+
 function periodoDeTransacoes(){
 	if(localStorage['transacoes'] != $("#transacoes").val()){
 		localStorage['transacoes'] = $("#transacoes").val();
