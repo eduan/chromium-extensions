@@ -67,10 +67,12 @@ $(function(){
 	
 	$(document).ajaxStart(function(){
 		$('#ajaxLoader').show();
+		$("#informacoesSaldo").hide();
 	})
 
 	$(document).ajaxStop(function(){
 		$('#ajaxLoader').hide();
+		$("#informacoesSaldo").show();
 	})
 	
 })
