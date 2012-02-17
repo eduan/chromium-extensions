@@ -18,7 +18,7 @@ function preencherSaldo(saldo){
 		chrome.browserAction.setBadgeText({text: saldo})
 		notificarMudancaSaldo();
 	}else{
-	 	$("#valor").html(localStorage['saldo'])
+	 	$("#valor").html(saldo)
 	}
 }
 
@@ -30,31 +30,20 @@ function periodoDeTransacoes(){
 } 
 
 function atualizarSaldo(){
-	
-	$.ajax({
-		url:"http://www.cbss.com.br/inst/convivencia/SaldoExtrato.jsp?numeroCartao="+localStorage['numero']+"&periodoSelecionado="+localStorage['transacoes'],
-		dataType:"html",
-		success:function(data){
-			preencherSaldo($(data).find("table:last td:last").text().replace("R$ ", ""));
-		 	$("#extrato-list").html($(data).find("table").eq(2).removeAttr('width'))
-		}
-	})
-
+	var saldoSource = new SourceFactory();
+	var empresa = saldoSource.getSource(localStorage['cartao']);
+	empresa.configurarSaldo();
 }
 
 $(function(){
 
-	if(!localStorage['transacoes'])
-		localStorage['transacoes'] = 4;
-	
-	$("#transacoes").change(periodoDeTransacoes);
-	
-	
 	if(!localStorage['numero'] || $.trim(localStorage['numero']) == "" || localStorage['numero'] < 8){
 
 		abrirConfiguracoes()
-
+		
 	}else{
+		
+		$("#mensagemConfiguracao").hide();
 		
 		atualizarSaldo();
 		
@@ -76,5 +65,12 @@ $(function(){
 	
 	}
 	
+	$(document).ajaxStart(function(){
+		$('#ajaxLoader').show();
+	})
 
+	$(document).ajaxStop(function(){
+		$('#ajaxLoader').hide();
+	})
+	
 })

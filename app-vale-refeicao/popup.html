@@ -4,32 +4,47 @@
 		<link rel="stylesheet" href="css/estilo.css" type="text/css" />
 		<script type="text/javascript" src='js/jquery.js'></script>
 		<script type="text/javascript" src='js/function.js'></script>
+		<script type="text/javascript" src='js/SourceFactory.js'></script>
+		<script type="text/javascript" src='js/TicketSource.js'></script>
+		<script type="text/javascript" src='js/VisaSource.js'></script>
 	</head>
 	<body>
 		<div id="body">
-			<div id="configurar" class='right'>
-				<a href='#' id='abrirConfiguracoes'>Configure o seu cart&atilde;o</a>
+			<div id="configurar" class="right">
+				<a href="#" id="abrirConfiguracoes">Configure o seu cart&atilde;o</a>
 			</div>
 			<div id="saldo-box">
-				Meu saldo atual &eacute; de:
-				<span id="saldo"> R$ <span id="valor">0,00</span> </span>
+				<div id="mensagemConfiguracao">
+					Por favor, configure o seu cart&atilde;o!
+				</div>
+				<div id="ajaxLoader">
+					<img src="img/ajax-loader.gif"/> Aguarde, enquanto atualizamos seu saldo!
+				</div>
+				<div id="informacoesSaldo">
+					Meu saldo atual &eacute; de:
+					<span id="saldo">
+						R$ <span id="valor">0,00</span> 
+					</span>
+				</div>
 			</div>
-			<div style="text-align:right;">
-				Transações:
-				<select name='transacoes' id='transacoes'>
-					<option value='0'>M&ecirc;s atual</option>
-					<option value='1'>&Uacute;ltimo m&ecirc;s</option>
-					<option value='2'>Pen&uacute;ltimo m&ecirc;s</option>
-					<option value='3'>Antepen&uacute;ltimo m&ecirc;s</option>
-					<option value='4'>Últimas 90 transações</option>
-				</select>
-			</div>
-			<div id="extrato">
-				<img src="img/arrow_down.gif" class='setinhas'>
-				<span >&Uacute;ltimos gastos</span>
-				<img src="img/arrow_down.gif" class='setinhas'>
-			</div>
-			<div id="extrato-list">
+			<div id="menuDeTransacoes">
+				<div style="text-align:right;">
+					Transações:
+					<select name='transacoes' id='transacoes'>
+						<option value='0'>M&ecirc;s atual</option>
+						<option value='1'>&Uacute;ltimo m&ecirc;s</option>
+						<option value='2'>Pen&uacute;ltimo m&ecirc;s</option>
+						<option value='3'>Antepen&uacute;ltimo m&ecirc;s</option>
+						<option value='4'>Últimas 90 transações</option>
+					</select>
+				</div>
+				<div id="extrato">
+					<img src="img/arrow_down.gif" class='setinhas'>
+					<span >&Uacute;ltimos gastos</span>
+					<img src="img/arrow_down.gif" class='setinhas'>
+				</div>
+				<div id="extrato-list">
+				</div>
 			</div>
 		</div>
 	</body>
