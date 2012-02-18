@@ -71,7 +71,7 @@ fieldset{
 	color:#008000;
 }
 
-#informacoesSaldo, #ajaxLoader, #menuDeTransacoes{
+#informacoesSaldo, #menuDeTransacoes{
 	display:none;
 }
 
