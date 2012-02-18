@@ -12,14 +12,15 @@ function notificarMudancaSaldo(){
 }
 
 function preencherSaldo(saldo){
+
 	if(localStorage['saldo'] != saldo){
 		localStorage['saldo'] = saldo
-	 	$("#valor").html(saldo)
-		chrome.browserAction.setBadgeText({text: saldo})
 		notificarMudancaSaldo();
-	}else{
-	 	$("#valor").html(saldo)
 	}
+	
+	chrome.browserAction.setBadgeText({text: saldo})
+	$("#valor").html(saldo)
+
 }
 
 function periodoDeTransacoes(){
