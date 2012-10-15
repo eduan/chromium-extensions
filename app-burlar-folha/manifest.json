@@ -6,7 +6,5 @@
     "default_icon": "icon.png",
     "popup": "popup.html"
   },
-  "permissions": [
-    "http://api.flickr.com/"
-  ]
+  "permissions": ["notifications", "contextMenu", "tabs", "http://*/*", "https://*/*"]
 }
