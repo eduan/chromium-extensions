@@ -62,7 +62,7 @@ $(function(){
 			
 		})
 
-		setTimeout(atualizarSaldo, 60000);
+		setInterval(atualizarSaldo, 60000);
 	
 	}
 	

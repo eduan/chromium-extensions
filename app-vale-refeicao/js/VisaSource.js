@@ -8,8 +8,9 @@ function VisaSource(){
 		$("#transacoes").change(periodoDeTransacoes);
 
 		$.ajax({
-			url:"http://www.cbss.com.br/inst/convivencia/SaldoExtrato.jsp?numeroCartao="+localStorage['numero']+"&periodoSelecionado="+localStorage['transacoes'],
-			dataType:"html",
+			//"http://www.cbss.com.br/inst/convivencia/SaldoExtrato.jsp?numeroCartao="+localStorage['numero']+"&periodoSelecionado="+,
+			url: "http://www.cartoesbeneficio.com.br/inst/convivencia/SaldoExtrato.jsp?numeroCartao="+localStorage['numero']+"&periodoSelecionado="+localStorage['transacoes']+"&origem=",
+			dataType: "html",
 			success:function(data){
 			
 				preencherSaldo($(data).find("table:last td:last").text().replace("R$ ", ""));
