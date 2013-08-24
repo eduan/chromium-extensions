@@ -1,0 +1,13 @@
+{
+   "background": {
+      "page": "background.html"
+   }, 
+   "browser_action": {
+      "default_popup": "popup.html"
+   },
+   "description": "Playlist on grooveshark",
+   "manifest_version": 2,
+   "name": "Playlist on grooveshark",
+   "permissions": [ "notifications", "tabs", "http://*/*", "https://*/*" ],
+   "version": "0.0.1"
+}
