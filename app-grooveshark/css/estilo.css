@@ -14,6 +14,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 }
 body {
+	background-color: #000;
 	line-height: 1;
 	font-family: sans;
 	font-size:10px;
@@ -66,7 +67,7 @@ dd{
 	text-align: right;
 }
 #lista{
-	width: 240px;
+	width: 220px;
 	height: 112px;
 	font-size: 10px;
 	margin-right: 8px;
@@ -78,9 +79,49 @@ dd{
 	float: right;
 	cursor: pointer;
 }
+
+.player p {
+	margin: 3px;
+	float: left;
+}
+
 .player:hover{
 	margin: 3px;
-	border-top: 1px solid #eee;
-	border-left:  1px solid #eee;
+	border-top: 1px solid #999;
+	border-left:  1px solid #999;
 	float: right;
+}
+#head{
+	width: 387px;
+	float: left;
+	color:#fff;
+	padding:5px;
+}
+#body{
+	color:#fff;
+	padding:5px;
+	font-weight: bold;
+}
+
+#head p{
+	padding: 3px;
+}
+.icon-app{
+	background-image: url('/img/grooveplay16.png');
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	float: left;
+}
+.icon-play{
+	background-image: url('/img/play.png');
+	background-repeat: no-repeat;
+	width: 11px;
+	height: 11px;
+	float: left;
+}
+
+.msg{
+	margin-bottom: 5px;
+	display: none;
 }

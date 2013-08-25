@@ -6,7 +6,11 @@
 		<script type="text/javascript" src='js/function.js'></script>
 	</head>
 	<body>
+		<div id="head">
+			<i class='icon-app'></i><p>Grooveshark Playlist</p>
+		</div>
 		<div id="body" class='left'>
+			<div class='msg'><u>/!\</u>Sua lista de músicas está vazia!</div>
 			<div class='left'>
 				<textarea id='lista'></textarea>
 			</div>
@@ -14,13 +18,13 @@
 				<dl>
 					<dt>Músicas detectadas:</dt>
 					<dd id='musicas-encontradas'>0</dd>
-					<dt>Obs:</dt>
-					<dd >Inclua uma música por linha</dd>
 					<dt>Grooveshark Status</dt>
 					<dd id='groovesharck-status'> x Fechado</dd>
+					<dt>Obs:</dt>
+					<dd >Inclua uma música por linha</dd>
 					<dt>Ação</dt>
 					<dd>
-						<a class='player'><i class='icon-play'></i>Playlist (&gt;)</a>
+						<a class='player'><i class='icon-play'></i><p>Play</p></a>
 					</dd>
 				</dl>
 			</div>
