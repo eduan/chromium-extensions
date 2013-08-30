@@ -34,12 +34,20 @@ $(function() {
 
         if(!lista.length){
           $(".msg").fadeIn('slow');
+          return;
         }
 
-        for(var i=0; i < lista.length; i++){
+        if(groovesharkTab < 0){
+            chrome.tabs.create({'url': 'http://grooveshark.com'}, function(tab) {
+              groovesharkTab = tab.id;
+            });
+        }
+
+        for(var i = 0; i < lista.length; i++){
+            var musicatr = lista[i].replace(/[^a-z0-9 ]/gi,'');
             chrome.tabs.executeScript(groovesharkTab, { code: 
                 "setTimeout(\"" +
-                   " document.getElementsByClassName('search')[0].value = '" + lista[i] + "'; " +
+                   " document.getElementsByClassName('search')[0].value = '" + musicatr + "'; " +
                    " document.getElementsByClassName('icon-search-gray')[0].click(); " +
                    " document.getElementsByClassName('play-or-add')[0].click(); \", " +
                     ( 2000 * i ) +
