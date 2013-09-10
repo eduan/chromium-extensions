@@ -44,13 +44,16 @@ $(function() {
         }
 
         for(var i = 0; i < lista.length; i++){
-            var musicatr = lista[i].replace(/[^a-z0-9 ]/gi,'');
+            var musicatr = lista[i].replace('\'','\\\'');
+            //var musicatr = lista[i];
+
             chrome.tabs.executeScript(groovesharkTab, { code: 
                 "setTimeout(\"" +
+                   " console.log('" + musicatr + "'); " +
                    " document.getElementsByClassName('search')[0].value = '" + musicatr + "'; " +
                    " document.getElementsByClassName('icon-search-gray')[0].click(); " +
                    " document.getElementsByClassName('play-or-add')[0].click(); \", " +
-                    ( 2000 * i ) +
+                    ( 4000 * i ) +
                 ");"
             });
         }
