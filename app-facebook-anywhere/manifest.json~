@@ -1,0 +1,19 @@
+{
+   "background": {
+      "page": "background.html"
+   }, 
+   "icons": {
+      "128": "img/grooveplay128.png",
+      "48": "img/grooveplay48.png",
+      "16": "img/grooveplay16.png"
+   },
+   "browser_action": {
+      "default_icon": "img/grooveplay16.png",
+      "default_popup": "popup.html"
+   },
+   "description": "Facebook Comment Anywhere",
+   "manifest_version": 2,
+   "name": "Facebook Comment Anywhere",
+   "permissions": [ "notifications", "tabs", "http://*/*", "https://*/*" ],
+   "version": "0.0.1"
+}
