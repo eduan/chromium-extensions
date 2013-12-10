@@ -2,15 +2,17 @@ function TicketSource(){
 
 	this.configurarSaldo = function(){
 		$.ajax({
-			url:"http://www.ticket.com.br/ticket-corporativo-web/ticket-consultcard?chkProduto=Ticket+Restaurante&txtNumeroCartao=" + localStorage['numero'] + "&txtOperacao=saldo_agendamentos&cardNumber=",
+			url:"http://www.ticket.com.br/portal-web/consult-card/balance/json?chkProduto=TR&card=" + localStorage['numero'] ,
 			dataType:"json",
 			success:function(data){
 				
-				preencherSaldo(data.seeBalance);
+				preencherSaldo(data.card.balance.value);
 
 			 	$("#informacoesSaldo").show();
 
-				var listHtml = '';
+			 	//site da ticket está com este recurso bugado - comentado temporariamente
+
+/*				var listHtml = '';
 
  			 	if(localStorage['historico'] == undefined || localStorage['ultimaConsulta'] != data.consultDate){
 				 	$.getJSON("http://www.ticket.com.br/ticket-corporativo-web/ticket-consultcard?txtOperacao=lancamentos&token=" + data.token + "&txtNumeroCartao=" + localStorage['numero'], function(historico){
@@ -30,7 +32,7 @@ function TicketSource(){
 			
 				$("#transacoes").val(4).attr('disabled','disabled');
 
-			}
+*/			}
 		})
 	}
 	
