@@ -15,6 +15,6 @@
    "description": "Playlist on grooveshark",
    "manifest_version": 2,
    "name": "Playlist on grooveshark",
-   "permissions": [ "notifications", "tabs", "http://*/*", "https://*/*" ],
+   "permissions": ["contextMenus", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "version": "0.0.1"
 }
