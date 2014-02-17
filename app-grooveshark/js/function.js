@@ -20,45 +20,61 @@ chrome.tabs.getSelected(null, function(tab){
     }
 });
 
-$(function() {
+chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
+  if(tabId == groovesharkTab){
+    groovesharkTab = -1;
+  }
+})
 
+$(function() {
     $('#lista').on('keypress keydown keyup',function(){
         lista = $.trim($(this).val());
         lista = lista.split('\n');
         $('#musicas-encontradas').text(lista.length);    
     });
-
     $(".player").click(function(){
-        
         $(".msg").hide();
 
         if(!lista.length){
           $(".msg").fadeIn('slow');
           return;
         }
-
-        if(groovesharkTab < 0){
-            chrome.tabs.create({'url': 'http://grooveshark.com'}, function(tab) {
-              groovesharkTab = tab.id;
-            });
-        }
-
         for(var i = 0; i < lista.length; i++){
             var musicatr = lista[i].replace('\'','\\\'');
-            //var musicatr = lista[i];
-
-            chrome.tabs.executeScript(groovesharkTab, { code: 
-                "setTimeout(\"" +
-                   " console.log('" + musicatr + "'); " +
-                   " document.getElementsByClassName('search')[0].value = '" + musicatr + "'; " +
-                   " document.getElementsByClassName('icon-search-gray')[0].click(); " +
-                   " document.getElementsByClassName('play-or-add')[0].click(); \", " +
-                    ( 4000 * i ) +
-                ");"
-            });
+            searchAndPlay( musicatr, 4000 * i);
         }
     });
-
 })
 
+function search(music){
+    if(!music.length){
+      return false;
+    }
+    console.log("Searching for: " + music);
+    if(groovesharkTab > 0){
+      chrome.tabs.executeScript(groovesharkTab, { code: 
+        " document.getElementsByClassName('search')[0].value = '" + music + "'; " +
+        " document.getElementsByClassName('icon-search-gray')[0].click();"
+      });
+    }else{
+      chrome.tabs.create({ url: 'http://grooveshark.com/#!/search?q=' + music }, function(tab){
+        groovesharkTab = tab.id;
+      });
+    }
+}
 
+function playFirst(delay){
+    chrome.tabs.executeScript(groovesharkTab, { code: 
+      " if(document.getElementsByClassName('play-or-add').length > 0){ " +
+        " setTimeout( function(){ " +
+        " console.log('Playing the first music: ' + document.getElementsByClassName('tooltip-for-full-text')[0].innerHTML ); " + 
+        " document.getElementsByClassName('play-or-add')[0].click(); " +
+        " }, " + delay + " ); " +
+      " } "
+    });
+}
+
+function searchAndPlay(music, delay){
+  search(music),
+  playFirst(delay);
+}
